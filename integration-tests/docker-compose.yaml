@@ -1,0 +1,40 @@
+version: '3.9'
+services:
+  revolut_db:
+    image: postgres
+    container_name: revolut-db-it
+    restart: on-failure
+    environment:
+      - POSTGRES_DB=revolut
+      - POSTGRES_USER=revolut
+      - POSTGRES_PASSWORD=challenge
+    ports:
+      - 5432:5432
+    volumes:
+      - ../db/init.psql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - challenge
+      
+  revolut_api:
+    image: revolut-api:latest
+    container_name: revolut-api-it
+    restart: on-failure
+    environment:
+      - DB_HOST=revolut_db
+      - DB_PORT=5432
+      - DB_USERNAME=revolut
+      - DB_PASSWORD=challenge
+      - FLASK_ENV=production
+      - FLASK_RUN_PORT=9000
+      - POSTGRES_USER=revolut
+      - POSTGRES_PASSWORD=challenge
+    ports:
+      - 9000:9000
+    networks:
+      - challenge
+    depends_on:
+      - revolut_db
+
+networks:
+  challenge:
+    driver: bridge

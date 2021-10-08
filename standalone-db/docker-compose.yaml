@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  revolut_db:
+    image: postgres
+    container_name: revolut-db
+    restart: on-failure
+    environment:
+      - POSTGRES_DB=revolut
+      - POSTGRES_USER=revolut
+      - POSTGRES_PASSWORD=challenge
+    ports:
+      - "5432:5432"
+    volumes:
+      - ../db/init.psql:/docker-entrypoint-initdb.d/init.sql

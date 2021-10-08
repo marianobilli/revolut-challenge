@@ -1,0 +1,6 @@
+CREATE SCHEMA revolut;
+
+CREATE TABLE revolut.users(
+    username varchar(25) PRIMARY KEY,
+    dateofbirth date NOT NULL
+);
