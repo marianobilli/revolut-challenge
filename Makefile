@@ -1,16 +1,17 @@
 build:
 	docker build . -t revolut-api:latest
 
-venv: 
-	python3 -m venv venv
-	source venv/bin/activate
-	python3 -m pip install app/requirements.txt
-	python3 -m pip install integration-tests/tests.py
+libs: 
+	# Uncomment the bellow two lines if you want to use venv
+	# python3 -m venv venv
+	# source venv/bin/activate
+	python3 -m pip install -r app/requirements.txt
+	python3 -m pip install -r integration-tests/requirements.txt
 
-unit-tests: venv
+unit-tests: libs
 	pytest app/unit_tests.py
 
-integration-tests: venv build
+integration-tests: libs build
 	pytest integration-tests/tests.py --docker-compose integration-tests/docker-compose.yaml
 
 tests: unit-tests integration-tests
