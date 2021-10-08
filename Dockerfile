@@ -1,8 +1,5 @@
 FROM python:3.9.7-slim
 
-#-- Install requirements
-# RUN apk --update add --no-cache python3-dev gcc libc-dev g++ musl-dev # these are for alpine
-
 #-- App Setup --
 RUN mkdir /opt/revolut
 WORKDIR /opt/revolut
