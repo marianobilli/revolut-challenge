@@ -13,7 +13,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Run Tests
-        uses: ouzi-dev/go-make-action@v1.5.0
+        
+      - name: pytester-cov
+        uses: alexanderdamiani/pytester-cov@v1.2.1
         with:
-          target: tests
+          pytest-root-dir: . 
+          pytest-tests-dir: app/ # optional, default is 
+          cov-omit-list: integration-tests/
+          requirements-file: app/requirements.txt
+
+ 
