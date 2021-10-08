@@ -2,3 +2,4 @@ flask
 SQLAlchemy
 psycopg2-binary
 pyopenssl
+requests
