@@ -68,7 +68,7 @@ revolut-eks-cluster-autoscaler:
         Action:
           - autoscaling:SetDesiredCapacity
           - autoscaling:TerminateInstanceInAutoScalingGroup
-        Resource: arn:aws:autoscaling:eu-west-1:356003666994:autoScalingGroup:*:autoScalingGroupName/eks-revolut-*
+        Resource: arn:aws:autoscaling:eu-central-1:660510932689:autoScalingGroup:*:autoScalingGroupName/eks-revolut-*
 #--------------------------------------------------------------------
 revolut-eks-alb-load-balancer-controller:
   description: Policies for AWS ALB ingress controller
