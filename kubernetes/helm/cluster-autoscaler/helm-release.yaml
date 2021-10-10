@@ -10,7 +10,7 @@ spec:
   targetNamespace: kube-system
   chart:
     spec:
-      chart: autoscaler
+      chart: cluster-autoscaler
       version: "9.10.7"
       sourceRef:
         kind: HelmRepository
