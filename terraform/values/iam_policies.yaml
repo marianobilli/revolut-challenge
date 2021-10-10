@@ -1,38 +1,3 @@
-revolut-challenge-ecr:
-  description: Policy used by IAM user to push images
-  policy:
-    Version: "2012-10-17"
-    Statement:
-      - Effect: Allow
-        Action:
-          - ecr:PutImageTagMutability
-          - ecr:StartImageScan
-          - ecr:DescribeImageReplicationStatus
-          - ecr:ListTagsForResource
-          - ecr:UploadLayerPart
-          - ecr:BatchDeleteImage
-          - ecr:ListImages
-          - ecr:CompleteLayerUpload
-          - ecr:TagResource
-          - ecr:DescribeRepositories
-          - ecr:BatchCheckLayerAvailability
-          - ecr:ReplicateImage
-          - ecr:GetLifecyclePolicy
-          - ecr:PutLifecyclePolicy
-          - ecr:DescribeImageScanFindings
-          - ecr:GetLifecyclePolicyPreview
-          - ecr:CreateRepository
-          - ecr:PutImageScanningConfiguration
-          - ecr:GetDownloadUrlForLayer
-          - ecr:PutImage
-          - ecr:UntagResource
-          - ecr:BatchGetImage
-          - ecr:DescribeImages
-          - ecr:StartLifecyclePolicyPreview
-          - ecr:InitiateLayerUpload
-          - ecr:GetRepositoryPolicy
-        Resource:
-          - arn:aws:ecr:eu-central-1:660510932689:repository/revolut-challenge
 #--------------------------------------------------------------------
 revolut-eks-external-dns:
   description: R53 zone management by eks external dns

@@ -6,17 +6,6 @@ resource "aws_iam_policy" "main" {
   policy      = jsonencode(each.value.policy)
 }
 
-resource "aws_iam_user" "main" {
-    for_each = local.iam_users
-    name     = each.key 
-}
-
-resource "aws_iam_user_policy_attachment" "test-attach" {
-  for_each   = toset(flatten([ for username,user in local.iam_users: [ for policy in user.policies: "${username}/${policy}" ] ]))
-  user       = split("/", each.value)[0]
-  policy_arn = try(aws_iam_policy.main[split("/", each.value)[1]].arn, split("/", each.value)[1])
-}
-
 data "aws_iam_policy_document" "trust_eks" {
   for_each  = local.iam_roles_eks
 

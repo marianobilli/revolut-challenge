@@ -28,7 +28,6 @@ terraform {
 
 locals {
   iam_policies = yamldecode(file("values/iam_policies.yaml"))
-  iam_users    = yamldecode(file("values/iam_users.yaml"))
   rds          = yamldecode(file("values/rds.yaml"))
   sg           = yamldecode(file("values/sg.yaml"))
   network      = yamldecode(file("values/network.yaml"))
