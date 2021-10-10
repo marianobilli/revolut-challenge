@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: helm-external-dns
+  namespace: flux-system
+data:
+  values.yaml: |
+    domainFilters:
+      - marianobilli.link
+    txtOwnerId: Z09185681X8T4SFGX7P7F
+    serviceAccount:
+      create: true
+      name: external-dns
+      annotations:
+        eks.amazonaws.com/role-arn: arn:aws:iam::660510932689:role/revolut-eks-external-dns
