@@ -21,7 +21,7 @@ revolut-eks-aws-load-balancer-controller:
         - eks_oidc
     service_accounts:
       - name: aws-load-balancer-controller
-        namespace: ingress-controllers
+        namespace: kube-system
   policy_attachment:
     - revolut-eks-alb-load-balancer-controller
 # ----------------------------------------------------------------
