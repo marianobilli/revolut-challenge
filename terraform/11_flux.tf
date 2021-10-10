@@ -5,7 +5,6 @@ locals {
 data "flux_install" "main" {
   target_path    = terraform.workspace
   network_policy = false
-  registry       = "artifactory.cicd.ocean.pmicloud.biz/docker/fluxcd"
   version        = "v0.17.1"
 }
 
@@ -26,7 +25,7 @@ data "flux_sync" "revolut" {
   name        = "revolut"
   namespace   = local.namespace
   target_path = "kubernetes/"
-  interval    = 1
+  interval    = 5
   branch      = "main"
   url         = "https://github.com/marianobilli/revolut-challenge.git"
 }
