@@ -1,0 +1,39 @@
+# ----------------------------------------------------------------
+revolut-eks-cluster-autoscaler:
+  trust_relationship:
+    actions:
+      - sts:AssumeRoleWithWebIdentity
+    principals:
+      Federated:
+        - eks_oidc
+    service_accounts:
+      - name: cluster-autoscaler
+        namespace: kube-system
+  policy_attachment:
+    - revolut-eks-cluster-autoscaler
+# ----------------------------------------------------------------
+revolut-eks-aws-load-balancer-controller:
+  trust_relationship:
+    actions:
+      - sts:AssumeRoleWithWebIdentity
+    principals:
+      Federated:
+        - eks_oidc
+    service_accounts:
+      - name: aws-load-balancer-controller
+        namespace: ingress-controllers
+  policy_attachment:
+    - revolut-eks-alb-load-balancer-controller
+# ----------------------------------------------------------------
+revolut-eks-external-dns:
+  trust_relationship:
+    actions:
+      - sts:AssumeRoleWithWebIdentity
+    principals:
+      Federated:
+        - eks_oidc
+    service_accounts:
+      - name: external-dns
+        namespace: kube-system
+  policy_attachment:
+    - revolut-eks-external-dns
