@@ -15,4 +15,4 @@ data:
         create: true
         name: cluster-autoscaler
         annotations:
-          eks.amazonaws.com/role-arn: arn:aws:iam::356003666994:role/revolut-eks-cluster-autoscaler
+          eks.amazonaws.com/role-arn: arn:aws:iam::660510932689:role/revolut-eks-cluster-autoscaler

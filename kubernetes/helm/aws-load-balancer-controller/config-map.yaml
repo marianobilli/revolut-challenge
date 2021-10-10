@@ -17,7 +17,7 @@ data:
       create: true
       name: aws-load-balancer-controller
       annotations:
-        eks.amazonaws.com/role-arn: arn:aws:iam::356003666994:role/revolut-eks-aws-load-balancer-controller
+        eks.amazonaws.com/role-arn: arn:aws:iam::660510932689:role/revolut-eks-aws-load-balancer-controller
 
     resources:
       limits:
