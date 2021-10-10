@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: revolut-challenge
+  namespace: revolut
+  labels:
+    app: revolut-challenge
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: revolut-challenge
+  template:
+    metadata:
+      labels:
+        app: revolut-challenge
+    spec:
+      containers:
+        - image: docker.io/marianobilli/revolut-challenge:0.1
+          imagePullPolicy: Always
+          name: revolut-challenge
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsUser: 10001
+            runAsGroup: 10001
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "32Mi"
+            limits:
+              cpu: "200m"
+              memory: "64Mi"

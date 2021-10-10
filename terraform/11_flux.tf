@@ -26,6 +26,7 @@ data "flux_sync" "revolut" {
   namespace   = local.namespace
   target_path = "kubernetes/"
   interval    = 5
+  secret      = "github"
   branch      = "main"
   url         = "https://github.com/marianobilli/revolut-challenge.git"
 }
