@@ -17,9 +17,30 @@ spec:
         app: revolut-challenge
     spec:
       containers:
-        - image: docker.io/marianobilli/revolut-challenge:0.1
+        - image: ghcr.io/marianobilli/revolut-challenge:latest
           imagePullPolicy: Always
           name: revolut-challenge
+          ports:
+          - containerPort: 9000
+          env:
+          - name: FLASK_RUN_PORT
+            value: "9000"
+          - name: DB_PORT
+            value: "5432"
+          - name: DB_HOST
+            value: revolut-challenge-db.czp7oiodmfcn.eu-central-1.rds.amazonaws.com
+          - name: LOG_LEVEL
+            value: INFO
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: db-password
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-password
+                key: password
           securityContext:
             runAsNonRoot: true
             allowPrivilegeEscalation: false
@@ -33,3 +54,23 @@ spec:
             limits:
               cpu: "200m"
               memory: "64Mi"
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+          livenessProbe:
+            httpGet:
+              path: /health
+              scheme: HTTPS
+              port: 9000
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /hello/status
+              scheme: HTTPS
+              port: 9000
+            initialDelaySeconds: 3
+            periodSeconds: 3
+      volumes:
+        - name: tmp
+          emptyDir: {}

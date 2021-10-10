@@ -1,0 +1,17 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: revolut-challenge
+  namespace: revolut
+  labels:
+    app: revolut-challenge
+spec:
+  type: NodePort
+  selector:
+    app: revolut-challenge
+  ports:
+    - name: https
+      port: 443
+      targetPort: 9000
+      protocol: TCP
