@@ -5,3 +5,4 @@ app/__pycache__/
 integration-tests/__pycache__/
 terraform/.terraform
 terraform/.terraform.lock.hcl
+kubernetes/secrets
