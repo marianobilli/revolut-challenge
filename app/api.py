@@ -8,10 +8,22 @@ from datetime import datetime,date
 
 app = flask.Flask(__name__)
 
+@app.route('/health', methods=['GET'])
+def get_health():
+    '''
+    Returns 200 if the application is up
+    
+    Returns
+    -------
+    (str, int)
+        (Response message, HTTP status)
+    '''
+    return make_response("revolut challenge up and running...",200)
+
 @app.route('/hello/status', methods=['GET'])
 def get_status():
     '''
-    Returns 200 if the application is up
+    Returns 200 if the application and the db is up
     
     Returns
     -------

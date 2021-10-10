@@ -18,6 +18,11 @@ def wait_for_api(session_scoped_container_getter):
     assert request_session.get(api_url, verify=False)
     return request_session
 
+def test_health(wait_for_api):
+    urllib3.disable_warnings()
+    response = requests.get("https://localhost:9000/health", verify=False)
+    assert response.status_code == 200
+
 def test_status(wait_for_api):
     urllib3.disable_warnings()
     response = requests.get("https://localhost:9000/hello/status", verify=False)
