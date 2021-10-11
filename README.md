@@ -73,9 +73,13 @@ Setup, testing, runing and cleaning up is all encapsulated in the make file. `Py
 # To run all tests
 $ make tests
 ```
+### Unit tests
 <p align="left">
   <img src="documentation/images/unit_tests.png" width="550" title="Infrastructure Diagram">
 </p>
+
+### Integration tests
+Integration tests leverages on a docker-compose plugin for pytest in order to start the app container and a db container
 <p align="left">
   <img src="documentation/images/integration_tests.png" width="550" title="Infrastructure Diagram">
 </p>
