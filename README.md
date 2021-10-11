@@ -26,7 +26,7 @@ All configuration is applied via FluxCD which pulls all kubernetes manifests fro
 - revolut-challenge application 
 
 <p align="left">
-  <img src="documentation/images/kubernetes.png" width="750" title="Infrastructure Diagram">
+  <img src="documentation/images/kubernetes.png" width="950" title="Infrastructure Diagram">
 </p>
 
 ## **Application View**
@@ -36,7 +36,7 @@ The application is written in python and uses the following libraries
 - Pytest
 
 <p align="left">
-  <img src="documentation/images/application.png" width="750" title="Infrastructure Diagram">
+  <img src="documentation/images/application.png" width="550" title="Infrastructure Diagram">
 </p>
 
 
